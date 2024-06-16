@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recurrent Neural Networks (RNNs)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+    <header>
+        <h1>Recurrent Neural Networks (RNNs)</h1>
+    </header>
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>Recurrent Neural Networks (RNNs) are a class of artificial neural networks designed for processing sequences of data. Unlike traditional neural networks, RNNs have connections that form directed cycles, allowing them to maintain a memory of previous inputs. This makes them particularly effective for tasks where the order of data matters, such as time series forecasting, natural language processing, and speech recognition.</p>
+        </section>
+        <section id="structure">
+            <h2>Structure of RNNs</h2>
+            <p>A typical RNN consists of a series of layers, with the key component being the recurrent layer. The main components of an RNN include:</p>
+            <ul>
+                <li><strong>Input Layer:</strong> The input layer receives the sequence of data. Each element of the sequence is processed at a different time step.</li>
+                <li><strong>Recurrent Layer:</strong> This layer processes each element of the sequence and maintains a hidden state that captures information from previous time steps. The hidden state is updated at each time step based on the current input and the previous hidden state.</li>
+                <li><strong>Output Layer:</strong> The output layer produces the final output of the network, which can be a single value or a sequence of values, depending on the task.</li>
+            </ul>
+            <figure>
+                <img src="https://example.com/rnn_structure.png" alt="Structure of a Recurrent Neural Network">
+                <figcaption>Figure 1: Structure of a Recurrent Neural Network</figcaption>
+            </figure>
+        </section>
+        <section id="recurrent-layer">
+            <h2>Recurrent Layer</h2>
+            <p>The recurrent layer is the core of an RNN. It maintains a hidden state that is updated at each time step based on the current input and the previous hidden state. The key concepts in the recurrent layer include:</p>
+            <ul>
+                <li><strong>Hidden State:</strong> A vector that captures information from previous time steps. It is updated at each time step using the current input and the previous hidden state.</li>
+                <li><strong>Weights:</strong> The recurrent layer has two sets of weights: one for the input-to-hidden connections and one for the hidden-to-hidden connections. These weights are learned during training.</li>
+            </ul>
+            <p>The update rule for the hidden state is typically given by:</p>
+            <code>h_t = f(W_x * x_t + W_h * h_(t-1) + b)</code>
+            <p>where <em>h_t</em> is the hidden state at time step <em>t</em>, <em>x_t</em> is the input at time step <em>t</em>, <em>W_x</em> and <em>W_h</em> are the weight matrices, <em>b</em> is the bias vector, and <em>f</em> is an activation function (such as tanh or ReLU).</p>
+        </section>
+        <section id="types">
+            <h2>Types of RNNs</h2>
+            <p>There are several types of RNNs, each designed for different tasks:</p>
+            <ul>
+                <li><strong>Vanilla RNN:</strong> The simplest type of RNN, where each output is dependent on the previous hidden state and the current input.</li>
+                <li><strong>Long Short-Term Memory (LSTM):</strong> A type of RNN designed to address the vanishing gradient problem in vanilla RNNs. LSTMs have special units called memory cells that can maintain information over long time periods.</li>
+                <li><strong>Gated Recurrent Unit (GRU):</strong> A simplified version of LSTM that combines the forget and input gates into a single update gate. GRUs are computationally more efficient than LSTMs while performing similarly on many tasks.</li>
+            </ul>
+            <figure>
+                <img src="https://example.com/rnn_types.png" alt="Types of RNNs">
+                <figcaption>Figure 2: Types of RNNs</figcaption>
+            </figure>
+        </section>
+        <section id="applications">
+            <h2>Applications of RNNs</h2>
+            <p>RNNs are widely used in various applications, including:</p>
+            <ul>
+                <li><strong>Natural Language Processing:</strong> Tasks such as language modeling, machine translation, and text generation.</li>
+                <li><strong>Speech Recognition:</strong> Converting spoken language into text.</li>
+                <li><strong>Time Series Forecasting:</strong> Predicting future values based on past observations, such as stock prices or weather data.</li>
+                <li><strong>Video Analysis:</strong> Tasks such as activity recognition and video captioning.</li>
+            </ul>
+            <figure>
+                <img src="https://example.com/rnn_applications.png" alt="Applications of RNNs">
+                <figcaption>Figure 3: Applications of RNNs</figcaption>
+            </figure>
+        </section>
+        <section id="training">
+            <h2>Training RNNs</h2>
+            <p>Training an RNN involves adjusting the weights and biases in the network to minimize the error between the predicted and actual output. The training process typically includes the following steps:</p>
+            <ol>
+                <li><strong>Initialization:</strong> Initialize the weights and biases randomly or using specific initialization techniques.</li>
+                <li><strong>Forward Propagation:</strong> Pass the input sequence through the network to generate an output at each time step.</li>
+                <li><strong>Loss Calculation:</strong> Calculate the error or loss using a loss function. Common loss functions include Cross-Entropy Loss for classification tasks and Mean Squared Error (MSE) for regression tasks.</li>
+                <li><strong>Backward Propagation:</strong> Calculate the gradients of the loss with respect to each weight and bias using backpropagation through time (BPTT).</li>
+                <li><strong>Weight Update:</strong> Update the weights and biases using an optimization algorithm such as Gradient Descent or Adam.</li>
+            </ol>
+        </section>
+        <section id="examples">
+            <h2>Examples</h2>
+            <p>Consider a simple RNN for sentiment analysis. The network is trained to classify the sentiment (positive or negative) of movie reviews from the IMDB dataset.</p>
+            <ol>
+                <li><strong>Input Layer:</strong> The input layer receives a sequence of words from a movie review.</li>
+                <li><strong>Embedding Layer:</strong> Converts the words into dense vectors of fixed size.</li>
+                <li><strong>Recurrent Layer:</strong> Processes the sequence of word vectors and maintains a hidden state that captures information from the entire review.</li>
+                <li><strong>Fully Connected Layer:</strong> Combines the features learned by the recurrent layer to classify the sentiment as positive or negative.</li>
+                <li><strong>Output Layer:</strong> Produces a probability distribution over the sentiment classes using a softmax activation function.</li>
+            </ol>
+        </section>
+    </main>
+</body>
+</html>

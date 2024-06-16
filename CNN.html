@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convolutional Neural Networks (CNNs)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+    <header>
+        <h1>Convolutional Neural Networks (CNNs)</h1>
+    </header>
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>Convolutional Neural Networks (CNNs) are a class of deep neural networks that are particularly effective for analyzing visual data. CNNs have been widely used in image and video recognition, image classification, medical image analysis, and other tasks involving visual data. They are designed to automatically and adaptively learn spatial hierarchies of features from input images.</p>
+        </section>
+        <section id="structure">
+            <h2>Structure of CNNs</h2>
+            <p>A typical CNN consists of several layers, each serving a specific purpose in the network. The key layers in a CNN include:</p>
+            <ul>
+                <li><strong>Convolutional Layer:</strong> This layer applies a set of filters (kernels) to the input image to produce feature maps. The filters slide over the input image, performing a convolution operation.</li>
+                <li><strong>Activation Layer:</strong> Non-linear activation functions like ReLU (Rectified Linear Unit) are applied to the feature maps to introduce non-linearity into the network.</li>
+                <li><strong>Pooling Layer:</strong> This layer performs down-sampling (subsampling) operations on the feature maps to reduce their spatial dimensions, thereby reducing the number of parameters and computations in the network.</li>
+                <li><strong>Fully Connected Layer:</strong> These layers are used at the end of the network. Neurons in fully connected layers have connections to all activations in the previous layer, and they are used to combine the features learned by convolutional and pooling layers to classify the input.</li>
+            </ul>
+            <figure>
+                <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*7_BCJFzekmPXmJQVRdDgwg.png" alt="Structure of a Convolutional Neural Network"width="500" height="350" class="center">
+                <figcaption>Figure 1.1: Structure of a Convolutional Neural Network</figcaption>
+            </figure>
+            <figure>
+                <img src="https://media.licdn.com/dms/image/D5612AQFIMoE3dNg5cQ/article-cover_image-shrink_720_1280/0/1695400757616?e=1723680000&v=beta&t=Lps4eWaYBeewwEhpJQ4fS8uNTZeV2joxcLUyDYa6r-o" alt="Structure of a Convolutional Neural Network" width="500" height="350" class="center">
+                <figcaption>Figure 1.2: Structure of a Convolutional Neural Network</figcaption>
+            </figure>
+        </section>
+        <section id="convolutional-layer">
+            <h2>Convolutional Layer</h2>
+            <p>The convolutional layer is the core building block of a CNN. It consists of a set of learnable filters (kernels) that are applied to the input image to produce feature maps. The key concepts in the convolutional layer include:</p>
+            <ul>
+                <li><strong>Filter (Kernel):</strong> A small matrix of weights that is convolved with the input image to detect specific features such as edges, textures, or patterns.</li>
+                <li><strong>Stride:</strong> The number of pixels by which the filter moves (slides) over the input image. A larger stride reduces the spatial dimensions of the output feature map.</li>
+                <li><strong>Padding:</strong> Adding extra pixels around the border of the input image to control the spatial size of the output feature map. Common padding types include 'valid' (no padding) and 'same' (padding to keep output size the same as input size).</li>
+            </ul>
+            <figure>
+                <img src="https://example.com/convolution_operation.png" alt="Convolution Operation">
+                <figcaption>Figure 2: Convolution Operation</figcaption>
+            </figure>
+        </section>
+        <section id="activation-layer">
+            <h2>Activation Layer</h2>
+            <p>The activation layer introduces non-linearity into the network, allowing it to learn more complex patterns. The most commonly used activation function in CNNs is the Rectified Linear Unit (ReLU), which is defined as:</p>
+            <code>ReLU(x) = max(0, x)</code>
+            <p>Other activation functions include Sigmoid and Tanh, but ReLU is preferred in most CNN architectures due to its simplicity and effectiveness.</p>
+        </section>
+        <section id="pooling-layer">
+            <h2>Pooling Layer</h2>
+            <p>The pooling layer performs down-sampling operations on the feature maps, reducing their spatial dimensions and the number of parameters in the network. The two most common types of pooling are:</p>
+            <ul>
+                <li><strong>Max Pooling:</strong> Takes the maximum value from each patch of the feature map covered by the filter.</li>
+                <li><strong>Average Pooling:</strong> Takes the average value from each patch of the feature map covered by the filter.</li>
+            </ul>
+            <figure>
+                <img src="https://example.com/pooling_operation.png" alt="Pooling Operation">
+                <figcaption>Figure 3: Pooling Operation</figcaption>
+            </figure>
+        </section>
+        <section id="fully-connected-layer">
+            <h2>Fully Connected Layer</h2>
+            <p>Fully connected layers are used at the end of the CNN. Each neuron in a fully connected layer is connected to all neurons in the previous layer, enabling the network to combine features learned from the convolutional and pooling layers to make predictions. These layers are typically used for classification tasks.</p>
+            <figure>
+                <img src="https://example.com/fully_connected_layer.png" alt="Fully Connected Layer">
+                <figcaption>Figure 4: Fully Connected Layer</figcaption>
+            </figure>
+        </section>
+        <section id="training">
+            <h2>Training CNNs</h2>
+            <p>Training a CNN involves adjusting the weights and biases in the network to minimize the error between the predicted and actual output. The training process typically includes the following steps:</p>
+            <ol>
+                <li><strong>Initialization:</strong> Initialize the weights and biases randomly or using specific initialization techniques.</li>
+                <li><strong>Forward Propagation:</strong> Pass the input data through the network to generate an output.</li>
+                <li><strong>Loss Calculation:</strong> Calculate the error or loss using a loss function. Common loss functions include Cross-Entropy Loss for classification tasks and Mean Squared Error (MSE) for regression tasks.</li>
+                <li><strong>Backward Propagation:</strong> Calculate the gradients of the loss with respect to each weight and bias using backpropagation.</li>
+                <li><strong>Weight Update:</strong> Update the weights and biases using an optimization algorithm such as Gradient Descent or Adam.</li>
+            </ol>
+        </section>
+        <section id="examples">
+            <h2>Examples</h2>
+            <p>Consider a simple CNN for image classification. The network is trained to classify images of handwritten digits (0-9) from the MNIST dataset.</p>
+            <ol>
+                <li><strong>Input Layer:</strong> The input layer receives 28x28 pixel grayscale images of handwritten digits.</li>
+                <li><strong>Convolutional Layer:</strong> Applies a set of filters to detect edges and textures in the images.</li>
+                <li><strong>Activation Layer:</strong> Uses ReLU activation to introduce non-linearity.</li>
+                <li><strong>Pooling Layer:</strong> Performs max pooling to reduce the spatial dimensions of the feature maps.</li>
+                <li><strong>Fully Connected Layer:</strong> Combines the features learned by the convolutional layers to classify the images into one of 10 digit classes (0-9).</li>
+                <li><strong>Output Layer:</strong> Produces a probability distribution over the 10 digit classes using a softmax activation function.</li>
+            </ol>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reinforcement Learning</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Reinforcement Learning</h1>
+        
+        <h2>1. Overview</h2>
+        
+        <h3>1.1 Definition</h3>
+        <p>Reinforcement learning (RL) is a type of machine learning where an agent learns to make decisions by interacting with an environment to achieve certain goals.</p>
+        
+        <h3>1.2 Historical Background</h3>
+        <p>Originating from behavioral psychology, RL gained significant attention in the 1990s. Since then, it has seen widespread application in areas such as robotics, gaming, and autonomous systems.</p>
+        
+        <h3>1.3 Applications in Various Fields</h3>
+        <p>RL has a broad range of applications:</p>
+        <ul>
+            <li><strong>Robotics</strong>: Robotic manipulation, navigation, and autonomous operation.</li>
+            <li><strong>Gaming</strong>: Gaming AI, such as AlphaGo and Dota 2 bots.</li>
+            <li><strong>Healthcare</strong>: Treatment optimization, personalized care, and resource management.</li>
+            <li><strong>Finance</strong>: Trading strategies, portfolio optimization, and financial decision-making.</li>
+        </ul>
+        
+        <h3>1.4 Key Elements</h3>
+        <ul>
+            <li><strong>Agent</strong>: The learner or decision maker.</li>
+            <li><strong>Environment</strong>: The world with which the agent interacts.</li>
+            <li><strong>State (s)</strong>: A representation of the current situation of the agent.</li>
+            <li><strong>Action (a)</strong>: A set of all possible moves the agent can make.</li>
+            <li><strong>Reward (r)</strong>: Feedback from the environment to evaluate the action.</li>
+            <li><strong>Policy (π)</strong>: A strategy used by the agent to decide actions based on the current state.</li>
+            <li><strong>Value Function (V)</strong>: Estimates the expected reward of being in a state and following a particular policy.</li>
+            <li><strong>Q-Value (Q)</strong>: Estimates the expected reward of taking an action in a state and following a particular policy.</li>
+            <li><strong>Discount Factor (γ)</strong>: A factor that discounts future rewards.</li>
+        </ul>
+        
+        <h2>2. Types of Reinforcement Learning</h2>
+        
+        <h3>2.1 Model-Free Methods</h3>
+        
+        <h4>2.1.1 Temporal Difference (TD) Learning</h4>
+        <p>TD learning combines ideas from Monte Carlo methods and dynamic programming.</p>
+        <ul>
+            <li><strong>TD(0)</strong>: One-step lookahead update.</li>
+            <li><strong>TD(λ)</strong>: Multi-step lookahead update using eligibility traces.</li>
+        </ul>
+        
+        <h4>2.1.2 Q-Learning</h4>
+        <p>Q-learning is an off-policy TD control algorithm.</p>
+        <ol>
+            <li>Initialize Q-values.</li>
+            <li>For each episode:
+                <ul>
+                    <li>Choose an action using ε-greedy policy.</li>
+                    <li>Take action, observe reward and next state.</li>
+                    <li>Update Q-value.</li>
+                </ul>
+            </li>
+        </ol>
+        <p><strong>Equation:</strong> 
+            <code>Q(s, a) = Q(s, a) + α [r + γ max_{a'} Q(s', a') - Q(s, a)]</code>
+        </p>
+        
+        <h4>2.1.3 SARSA (State-Action-Reward-State-Action)</h4>
+        <p>SARSA is an on-policy TD control algorithm.</p>
+        <ol>
+            <li>Initialize Q-values.</li>
+            <li>For each episode:
+                <ul>
+                    <li>Choose an action using ε-greedy policy.</li>
+                    <li>Take action, observe reward and next state.</li>
+                    <li>Choose next action.</li>
+                    <li>Update Q-value.</li>
+                </ul>
+            </li>
+        </ol>
+        <p><strong>Equation:</strong> 
+            <code>Q(s, a) = Q(s, a) + α [r + γ Q(s', a') - Q(s, a)]</code>
+        </p>
+        
+        <h4>2.1.4 Deep Q-Networks (DQN)</h4>
+        <p>DQN uses neural networks to approximate the Q-function.</p>
+        
+        <h3>2.2 Model-Based Methods</h3>
+        
+        <h4>2.2.1 Dynamic Programming</h4>
+        <p>Dynamic programming requires a model of the environment.</p>
+        <ul>
+            <li><strong>Policy Iteration</strong>:
+                <ol>
+                    <li>Policy evaluation.</li>
+                    <li>Policy improvement.</li>
+                </ol>
+            </li>
+            <li><strong>Value Iteration</strong>:
+                <ol>
+                    <li>Initialize value function.</li>
+                    <li>Iteratively update the value function using Bellman optimality equation.</li>
+                </ol>
+            </li>
+        </ul>
+        
+        <h4>2.2.2 Monte Carlo Methods</h4>
+        <ul>
+            <li><strong>First-Visit MC</strong>: Averages returns of the first visit to each state.</li>
+            <li><strong>Every-Visit MC</strong>: Averages returns of all visits to each state.</li>
+        </ul>
+        
+        <h3>2.3 Policy Gradient Methods</h3>
+        
+        <h4>2.3.1 REINFORCE Algorithm</h4>
+        <ol>
+            <li>Initialize policy parameters.</li>
+            <li>For each episode:
+                <ul>
+                    <li>Generate an episode using current policy.</li>
+                    <li>Compute return for each state-action pair.</li>
+                    <li>Update policy parameters using gradient ascent.</li>
+                </ul>
+            </li>
+        </ol>
+        
+        <h4>2.3.2 Actor-Critic Methods</h4>
+        <p>Combines policy gradient (actor) and value function (critic) approaches.</p>
+        <ul>
+            <li><strong>Components</strong>:
+                <ul>
+                    <li><strong>Actor</strong>: Updates the policy.</li>
+                    <li><strong>Critic</strong>: Updates the value function.</li>
+                </ul>
+            </li>
+        </ul>
+        <ol>
+            <li>Initialize actor and critic parameters.</li>
+            <li>For each episode:
+                <ul>
+                    <li>Choose action using actor policy.</li>
+                    <li>Take action, observe reward and next state.</li>
+                    <li>Update critic using TD error.</li>
+                    <li>Update actor using policy gradient.</li>
+                </ul>
+            </li>
+        </ol>
+        
+        <h4>2.3.3 Proximal Policy Optimization (PPO)</h4>
+        <p>PPO optimizes a surrogate objective function for stable training.</p>
+        
+        <h3>2.4 Deep Reinforcement Learning</h3>
+        
+        <h4>2.4.1 Deep Q-Networks (DQN)</h4>
+        <p>Improvements over standard Q-learning:</p>
+        <ul>
+            <li><strong>Experience Replay</strong>: Store experiences and sample randomly to break correlation.</li>
+            <li><strong>Fixed Q-Targets</strong>: Use a separate target network to stabilize training.</li>
+        </ul>
+        
+        <h4>2.4.2 Double DQN</h4>
+        <p>Addresses overestimation bias in DQN by using separate networks for action selection and Q-value updates.</p>
+        
+        <h4>2.4.3 Dueling DQN</h4>
+        <p>Uses a network architecture with two streams:
+            <ul>
+                <li><strong>Value Stream</strong>: Estimates state value.</li>
+                <li><strong>Advantage Stream</strong>: Estimates advantage of each action.</li>
+            </ul>
+        </p>
+        
+        <h4>2.4.4 Policy Gradient with Deep Learning</h4>
+        <ul>
+            <li><strong>Trust Region Policy Optimization (TRPO)</strong>: Optimizes policy with constraints on policy updates.</li>
+            <li><strong>Proximal Policy Optimization (PPO)</strong>: Improves TRPO with a clipped objective for stable updates.</li>
+        </ul>
+        
+        <h4>2.4.5 Actor-Critic with Deep Learning</h4>
+        <ul>
+            <li><strong>Deep Deterministic Policy Gradient (DDPG)</strong>: Extends DPG with deep networks for continuous action spaces.</li>
+            <li><strong>Asynchronous Advantage Actor-Critic (A3C)</strong>: Uses multiple agents to explore the environment in parallel.</li>
+        </ul>
+        
+        <h2>3. Exploration Strategies</h2>
+        
+        <h3>3.1 ε-Greedy</h3>
+        <p>Chooses random actions with probability ε and greedy actions with probability 1-ε. Simple and effective but may lead to suboptimal exploration.</p>
+        
+        <h3>3.2 Softmax Exploration</h3>
+        <p>Chooses actions probabilistically based on their Q-values using a softmax function. Balances exploration and exploitation but can be computationally expensive.</p>
+        
+        <h3>3.3 Upper Confidence Bound (UCB)</h3>
+        <p>Chooses actions based on both Q-values and the uncertainty of those values. Provides theoretical guarantees on performance but requires careful tuning of parameters.</p>
+        
+        <h2>4. Evaluation Metrics</h2>
+        
+        <h3>4.1 Cumulative Reward</h3>
+        <p>Total reward accumulated over an episode. Useful for assessing overall performance.</p>
+        
+        <h3>4.2 Average Reward</h3>
+        <p>Average reward per time step. Useful for evaluating long-term performance.</p>
+        
+        <h3>4.3 Discounted Reward</h3>
+        <p>Total reward considering a discount factor for future rewards. Useful for evaluating the effectiveness of learning policies.</p>
+        
+        <h3>4.4 Sample Efficiency</h3>
+        <p>Number of samples required to reach a certain level of performance. Useful for assessing the efficiency of learning algorithms.</p>
+        
+        <h2>5. Practical Considerations</h2>
+        
+        <h3>5.1 Hyperparameter Tuning</h3>
+        <p>Methods: Grid Search, Random Search, Bayesian Optimization. Tools: Optuna, Hyperopt.</p>
+        
+        <h3>5.2 Feature Engineering</h3>
+        <p>Techniques: Normalization, discretization, encoding categorical variables. Tools: Scikit-learn, pandas.</p>
+        
+        <h3>5.3 Model Validation</h3>
+        <p>Techniques: Cross-validation, holdout validation. Tools: Scikit-learn, TensorFlow, PyTorch.</p>
+        
+        <h2>6. Exploration vs. Exploitation</h2>
+        
+        <h3>6.1 ε-Greedy Strategy</h3>
+        <p>Balances exploration and exploitation by introducing randomness.</p>
+        
+        <h3>6.2 Upper Confidence Bound (UCB)</h3>
+        <p>Balances exploration and exploitation based on confidence bounds.</p>
+        
+        <h2>7. Advanced Topics</h2>
+        
+        <h3>7.1 Multi-Agent Reinforcement Learning</h3>
+        <p>Multiple agents learn and interact in the same environment. Applications include autonomous driving, game playing, and resource management.</p>
+        
+        <h3>7.2 Transfer Learning in RL</h3>
+        <p>Transferring knowledge from one task to another. Useful for speeding up learning in related tasks.</p>
+        
+        <h3>7.3 Meta-Reinforcement Learning</h3>
+        <p>Learning to learn, optimizing the learning process itself. Applications include few-shot learning and adaptable agents.</p>
+        
+        <h3>7.4 Temporal Difference Learning</h3>
+        <ul>
+            <li><strong>TD(0)</strong>: Updates value function using immediate reward and next state value estimate.</li>
+            <li><strong>TD(λ)</strong>: Generalizes TD(0) by introducing eligibility traces.</li>
+        </ul>
+        
+        <h2>8. Applications of Reinforcement Learning</h2>
+        
+        <h3>8.1 Robotics</h3>
+        <p>Applications include robotic manipulation, navigation, and autonomous operation.</p>
+        
+        <h3>8.2 Gaming</h3>
+        <p>Applications include gaming AI, such as AlphaGo and Dota 2 bots.</p>
+        
+        <h3>8.3 Healthcare</h3>
+        <p>Applications include treatment optimization, personalized care, and resource management.</p>
+        
+        <h3>8.4 Finance</h3>
+        <p>Applications include trading strategies, portfolio optimization, and financial decision-making.</p>
+        
+        <h2>9. Challenges and Future Directions</h2>
+        
+        <h3>9.1 Sample Efficiency</h3>
+        <p>Developing algorithms for learning effectively from limited data is a significant challenge.</p>
+        
+        <h3>9.2 Exploration Strategies</h3>
+        <p>Designing efficient exploration methods in complex environments is an ongoing research area.</p>
+        
+        <h3>9.3 Scalability</h3>
+        <p>Scaling RL algorithms to handle large state and action spaces is critical for real-world applications.</p>
+        
+        <h3>9.4 Safety and Ethics</h3>
+        <p>Ensuring safety and ethical behavior in RL agents is crucial, especially in high-stakes applications.</p>
+        
+        <h2>10. Conclusion</h2>
+        <p>Reinforcement learning is a powerful paradigm with significant potential across various fields. Ongoing research aims to address current challenges and expand its applicability.</p>
+        
+        <h2>11. Resources</h2>
+        
+        <h3>11.1 Books</h3>
+        <ul>
+            <li><strong>"Reinforcement Learning: An Introduction" by Richard S. Sutton and Andrew G. Barto</strong></li>
+            <li><strong>"Deep Reinforcement Learning Hands-On" by Maxim Lapan</strong></li>
+        </ul>
+        
+        <h3>11.2 Online Courses</h3>
+        <ul>
+            <li><strong>Coursera: "Deep Learning Specialization" by Andrew Ng (Reinforcement Learning module)</strong></li>
+            <li><strong>Udacity: "Deep Reinforcement Learning Nanodegree"</strong></li>
+        </ul>
+        
+        <h3>11.3 Platforms</h3>
+        <ul>
+            <li><strong>OpenAI Gym</strong></li>
+            <li><strong>Unity ML-Agents</strong></li>
+        </ul>
+        
+        <h3>11.4 Libraries</h3>
+        <ul>
+            <li><strong>TensorFlow</strong></li>
+            <li><strong>PyTorch</strong></li>
+            <li><strong>Stable Baselines</strong></li>
+        </ul>
+    </div>
+</body>
+</html>

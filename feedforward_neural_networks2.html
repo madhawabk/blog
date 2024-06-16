@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedforward Neural Networks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+    <header>
+        <h1>Feedforward Neural Networks</h1>
+    </header>
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>Feedforward Neural Networks (FNNs) are a fundamental type of artificial neural network where the connections between the nodes do not form a cycle. This type of network is called feedforward because information only moves forward through the network, from the input nodes, through the hidden nodes (if any), and to the output nodes. FNNs are the simplest form of artificial neural network and are used extensively in machine learning applications.</p>
+        </section>
+        <section id="structure">
+            <h2>Structure</h2>
+            <p>The basic structure of a Feedforward Neural Network consists of three types of layers:</p>
+            <ul>
+                <li><strong>Input Layer:</strong> This layer receives the initial data. Each neuron in the input layer represents a feature of the input data.</li>
+                <li><strong>Hidden Layers:</strong> These layers are located between the input and output layers. Neurons in these layers perform computations and feature extraction. A network can have multiple hidden layers.</li>
+                <li><strong>Output Layer:</strong> This layer produces the final output of the network. The number of neurons in this layer corresponds to the number of output classes or the dimension of the output.</li>
+            </ul>
+            <figure>
+                <img src="https://example.com/ffnn_structure.png" alt="Structure of a Feedforward Neural Network">
+                <figcaption>Figure 1: Structure of a Feedforward Neural Network</figcaption>
+            </figure>
+        </section>
+        <section id="neuron">
+            <h2>Neuron</h2>
+            <p>A neuron (or node) in a neural network is a computational unit that receives input, processes it, and produces an output. Each neuron performs the following steps:</p>
+            <ol>
+                <li><strong>Receive Inputs:</strong> The neuron receives inputs, which are usually numerical values representing features of the data.</li>
+                <li><strong>Weighted Sum:</strong> Each input is multiplied by a weight, and a bias term is added. The weighted sum is calculated as follows:
+                    <br>
+                    <p>\(z = \sum(w_i . x_i) + b\)</p>
+
+
+                </li>
+                <li><strong>Activation Function:</strong> The weighted sum is passed through an activation function to introduce non-linearity into the model. Common activation functions include:
+                    <ul>
+                        <li>Sigmoid: <p>\(σ(z) = 1 / (1 + e^{-z})\)</p></li>
+                        <li>Tanh: <p>\(tanh(z) = (e^z - e^{-z}) / (e^z + e^{-z})\)</p></li>
+                        <li>ReLU: <p>\(ReLU(z) = max(0, z)\)</p></li>
+                    </ul>
+                </li>
+            </ol>
+            <figure>
+                <img src="https://example.com/neuron.png" alt="Diagram of a Neuron">
+                <figcaption>Figure 2: Diagram of a Neuron</figcaption>
+            </figure>
+        </section>
+        <section id="forward-propagation">
+            <h2>Forward Propagation</h2>
+            <p>Forward propagation is the process by which input data is passed through the network to generate an output. This involves the following steps:</p>
+            <ol>
+                <li>The input data is fed into the input layer.</li>
+                <li>The data is then passed through each hidden layer. In each layer, the weighted sum is calculated and passed through an activation function.</li>
+                <li>The output of each hidden layer becomes the input to the next layer.</li>
+                <li>Finally, the processed data reaches the output layer, producing the final output.</li>
+            </ol>
+        </section>
+        <section id="training">
+            <h2>Training Feedforward Neural Networks</h2>
+            <p>Training a feedforward neural network involves adjusting the weights and biases of the network to minimize the error between the predicted output and the actual target values. This process typically includes the following steps:</p>
+            <ol>
+                <li><strong>Initialization:</strong> The weights and biases are initialized randomly or using specific initialization techniques.</li>
+                <li><strong>Forward Propagation:</strong> Input data is passed through the network to generate an output.</li>
+                <li><strong>Loss Calculation:</strong> The error or loss is calculated using a loss function. Common loss functions include Mean Squared Error (MSE) for regression tasks and Cross-Entropy Loss for classification tasks.</li>
+                <li><strong>Backward Propagation:</strong> The gradients of the loss with respect to each weight and bias are calculated using backpropagation.</li>
+                <li><strong>Weight Update:</strong> The weights and biases are updated using an optimization algorithm such as Gradient Descent or Adam.</li>
+            </ol>
+        </section>
+        <section id="activation-functions">
+            <h2>Activation Functions</h2>
+            <p>Activation functions are mathematical functions applied to the weighted sum of inputs to introduce non-linearity into the model. They allow neural networks to learn complex patterns. Common activation functions include:</p>
+            <ul>
+                <li><strong>Sigmoid:</strong> Maps the input to a value between 0 and 1. Useful for binary classification.
+                    <br>
+                    <code>σ(z) = 1 / (1 + e^(-z))</code>
+                </li>
+                <li><strong>Tanh:</strong> Maps the input to a value between -1 and 1. Useful for zero-centered data.
+                    <br>
+                    <code>tanh(z) = (e^z - e^(-z)) / (e^z + e^(-z))</code>
+                </li>
+                <li><strong>ReLU:</strong> Rectified Linear Unit, maps the input to a value between 0 and the input. Useful for hidden layers in neural networks.
+                    <br>
+                    <code>ReLU(z) = max(0, z)</code>
+                </li>
+            </ul>
+        </section>
+        <section id="examples">
+            <h2>Examples</h2>
+            <p>Consider a simple feedforward neural network with one hidden layer for a binary classification task. The network is trained to classify whether an email is spam or not spam.</p>
+            <ol>
+                <li>The input layer receives features such as the presence of certain keywords, the length of the email, etc.</li>
+                <li>The hidden layer processes these features using weights, biases, and an activation function like ReLU.</li>
+                <li>The output layer produces a probability score using a sigmoid activation function, indicating the likelihood of the email being spam.</li>
+                <li>The network is trained using labeled data (emails labeled as spam or not spam) to minimize the classification error.</li>
+            </ol>
+        </section>
+    </main>
+</body>
+</html>
