@@ -670,7 +670,7 @@ markmap:
         - **Applications**: Image and video recognition.
         - **Concepts**: Filters/kernels, feature maps, stride, padding, pooling (max, average).
 
-      - 3.3 [Recurrent Neural Networks (RNN)](./Recurrent Neural Network.html)
+      - 3.3 [Recurrent Neural Networks (RNN)](./Recurrent_Neural_Network.html)
         - **Components**: Neurons with recurrent connectio  ns, hidden state.
         - **Applications**: Sequential data, time series, natural language processing.
         - **Variants**: 
