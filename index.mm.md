@@ -683,7 +683,7 @@ markmap:
         - **Applications**: Dimensionality reduction, anomaly detection, denoising.
 
 
-      - 3.5 [Generative Adversarial Networks (GANs)](./GANshtml)
+      - 3.5 [Generative Adversarial Networks (GANs)](./GANs.html)
 
         - 1.Introduction to GANs
           - Definition
