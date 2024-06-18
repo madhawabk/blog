@@ -666,9 +666,17 @@ markmap:
         - **Function**: Data flows in one direction, from input to output.
 
       - 3.2 [Convolutional Neural Networks (CNN)](./CNN.html)
-        - **Components**: Convolutional layers, pooling layers, fully connected layers.
+        - **Components**
+          - Convolutional layers
+          - Pooling layers
+          - Fully connected layers
         - **Applications**: Image and video recognition.
-        - **Concepts**: Filters/kernels, feature maps, stride, padding, pooling (max, average).
+        - **Concepts** 
+          - Filters/kernels 
+          - Feature maps
+          - Stride
+          - Padding 
+          - Pooling (max, average)
 
       - 3.3 [Recurrent Neural Networks (RNN)](./Recurrent_Neural_Network.html)
         - **Components**: Neurons with recurrent connectio  ns, hidden state.
